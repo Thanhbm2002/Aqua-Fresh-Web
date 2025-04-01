@@ -8,7 +8,6 @@ public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", nullable = false)
     private Integer id;
 
     @Column(name = "address")
