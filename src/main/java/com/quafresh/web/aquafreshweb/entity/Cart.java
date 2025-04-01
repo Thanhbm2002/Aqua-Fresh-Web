@@ -16,11 +16,11 @@ public class Cart {
     @Column(name = "ID", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "id_product_detail", nullable = false)
     private ProductDetail idProductDetail;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "id_user")
     private User idUser;
 
@@ -28,8 +28,7 @@ public class Cart {
     @Column(name = "quantity")
     private Integer quantity;
 
-    @ColumnDefault("CURRENT_TIMESTAMP")
-    @Column(name = "date_added")
+    @Column(name = "date_added", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Instant dateAdded;
 
 }

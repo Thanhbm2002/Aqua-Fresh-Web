@@ -17,7 +17,7 @@ public class Picture {
     @Column(name = "url_image", length = 500)
     private String urlImage;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER,optional = false)
     @JoinColumn(name = "id_product_detail", nullable = false)
     private ProductDetail idProductDetail;
 

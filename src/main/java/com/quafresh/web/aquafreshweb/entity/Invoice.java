@@ -17,12 +17,11 @@ public class Invoice {
     @Column(name = "ID", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_order", nullable = false)
     private OrderTable idOrder;
 
-    @ColumnDefault("CURRENT_TIMESTAMP")
-    @Column(name = "invoice_date")
+    @Column(name = "invoice_date", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Instant invoiceDate;
 
     @Column(name = "total", precision = 10, scale = 2)

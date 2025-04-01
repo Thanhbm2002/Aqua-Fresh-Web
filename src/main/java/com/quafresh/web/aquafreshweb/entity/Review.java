@@ -19,11 +19,11 @@ public class Review {
     @Column(name = "content", length = 500)
     private String content;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER,optional = false)
     @JoinColumn(name = "id_product_detail", nullable = false)
     private ProductDetail idProductDetail;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER,optional = false)
     @JoinColumn(name = "id_user", nullable = false)
     private User idUser;
 

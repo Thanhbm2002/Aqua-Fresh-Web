@@ -18,12 +18,12 @@ public class OrderTable {
     @Column(name = "ID", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER,optional = false)
     @JoinColumn(name = "id_user", nullable = false)
     private User idUser;
 
     @ColumnDefault("CURRENT_TIMESTAMP")
-    @Column(name = "order_date")
+    @Column(name = "order_date",columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Instant orderDate;
 
     @Column(name = "total", precision = 10, scale = 2)
