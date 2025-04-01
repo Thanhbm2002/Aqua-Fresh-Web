@@ -8,23 +8,21 @@ import org.hibernate.annotations.ColumnDefault;
 @Getter
 @Setter
 @Entity
-public class Address {
+public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
     private Integer id;
 
-    @Column(name = "address")
-    private String address;
+    @Column(name = "product_name", nullable = false)
+    private String productName;
 
-    @Column(name = "commune")
-    private String commune;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_category")
+    private Category idCategory;
 
-    @Column(name = "district")
-    private String district;
-
-    @Column(name = "province")
-    private String province;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_company")
+    private Company idCompany;
 
     @ColumnDefault("b'1'")
     @Column(name = "status")

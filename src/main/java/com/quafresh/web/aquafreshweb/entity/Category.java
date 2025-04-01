@@ -8,23 +8,14 @@ import org.hibernate.annotations.ColumnDefault;
 @Getter
 @Setter
 @Entity
-public class Address {
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
     private Integer id;
 
-    @Column(name = "address")
-    private String address;
-
-    @Column(name = "commune")
-    private String commune;
-
-    @Column(name = "district")
-    private String district;
-
-    @Column(name = "province")
-    private String province;
+    @Column(name = "name")
+    private String name;
 
     @ColumnDefault("b'1'")
     @Column(name = "status")
