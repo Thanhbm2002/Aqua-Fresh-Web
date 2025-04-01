@@ -5,10 +5,13 @@ import lombok.Getter;
 import lombok.Setter;
 
 @AllArgsConstructor
-@Setter
 @Getter
-public class RegisterResquetsDTO {
-    private String message;
+@Setter
+public class LoginRequestDTO {
     private String username;
+    private String password;
     private String email;
+    private String phone;
+    private Boolean role;
+    private String token;
 }
