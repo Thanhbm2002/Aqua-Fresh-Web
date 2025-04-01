@@ -1,14 +1,11 @@
 package com.quafresh.web.aquafreshweb.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import org.hibernate.annotations.ColumnDefault;
 
-@Getter
-@Setter
 @Entity
+@Table(name = "Address")
 public class Address {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
@@ -26,8 +23,6 @@ public class Address {
     @Column(name = "province")
     private String province;
 
-    @ColumnDefault("b'1'")
     @Column(name = "status")
     private Boolean status;
-
 }

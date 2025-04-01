@@ -1,40 +1,47 @@
 package com.quafresh.web.aquafreshweb.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.ColumnDefault;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.Collections;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-public class User {
+@Table(name = "User")
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", nullable = false)
-    private Integer id;
-
-    @Column(name = "username", nullable = false)
+    private int id;
+    @Column(name = "username")
     private String username;
-
-    @Column(name = "password", nullable = false)
+    @Column(name = "password")
     private String password;
-
     @Column(name = "fullname")
     private String fullname;
-
     @Column(name = "email")
     private String email;
-
-    @Column(name = "phone_number", length = 20)
-    private String phoneNumber;
-
-    @ManyToOne(fetch = FetchType.LAZY)
+    @Column(name = "phone_number")
+    private String phone;
+    @ManyToOne
     @JoinColumn(name = "id_address")
-    private Address idAddress;
-
-    @ColumnDefault("b'0'")
+    private Address address;
     @Column(name = "role")
     private Boolean role;
-
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        // Trả về quyền dựa trên giá trị của role
+        return Collections.singletonList(
+                new SimpleGrantedAuthority(role ? "ADMIN" : "USER")
+        );
+    }
 }
