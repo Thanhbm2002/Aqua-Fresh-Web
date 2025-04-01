@@ -1,4 +1,10 @@
 package com.quafresh.web.aquafreshweb.repositories;
 
-public class UserRepository {
+import com.quafresh.web.aquafreshweb.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
+
+public interface UserRepository extends JpaRepository<User, Integer> {
+    Optional<User> findByEmail(String username);
 }

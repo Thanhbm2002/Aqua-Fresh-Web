@@ -12,8 +12,8 @@ public class JwtUtil {
         this.jwtConfig = jwtConfig;
     }
 
-    // ✅ Tạo token chứa username + role
-    public String generateToken(String username, String role) {
+    // Tạo token chứa username + role
+    public String generateToken(String username, Boolean role) {
         return Jwts.builder()
                 .setSubject(username)
                 .claim("role", role)  // Thêm role vào JWT
@@ -23,7 +23,7 @@ public class JwtUtil {
                 .compact();
     }
 
-    // ✅ Giải mã token (lấy username)
+    // Giải mã token (lấy username)
     public String extractToken(String token) {
         try {
             return Jwts.parser()
@@ -45,7 +45,7 @@ public class JwtUtil {
         return null;
     }
 
-    // ✅ Kiểm tra token có hợp lệ không
+    // Kiểm tra token có hợp lệ không
     public boolean validateToken(String token) {
         try {
             Jwts.parser().setSigningKey(jwtConfig.getSecret()).parseClaimsJws(token);
@@ -55,7 +55,7 @@ public class JwtUtil {
         }
     }
 
-    // ✅ Lấy toàn bộ claims từ token
+    // Lấy toàn bộ claims từ token
     public Claims getClaims(String token) {
         try {
             return Jwts.parser()
@@ -67,9 +67,17 @@ public class JwtUtil {
         }
     }
 
-    // ✅ Lấy role từ token
-    public String getUserRole(String token) {
+    //  Lấy role từ token
+    public Boolean getUserRole(String token) {
         Claims claims = getClaims(token);
-        return claims != null ? claims.get("role", String.class) : null;
+        if (claims != null) {
+            Object roleObject = claims.get("role");
+            if (roleObject instanceof Boolean) {
+                return (Boolean) roleObject;  // Nếu đúng kiểu Boolean thì trả về
+            } else if (roleObject instanceof Integer) {
+                return ((Integer) roleObject) != 0;  // Chuyển 1/0 thành true/false nếu bị ép kiểu
+            }
+        }
+        return null;  // Nếu lỗi, trả về null
     }
 }
