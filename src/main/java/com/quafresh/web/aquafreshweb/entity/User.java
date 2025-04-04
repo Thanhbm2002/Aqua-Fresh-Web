@@ -32,9 +32,8 @@ public class User implements UserDetails {
     private String email;
     @Column(name = "phone_number")
     private String phone;
-    @ManyToOne
-    @JoinColumn(name = "id_address")
-    private Address address;
+    @Column(name = "address")
+    private String address;
     @Column(name = "role")
     private Boolean role;
     @Override

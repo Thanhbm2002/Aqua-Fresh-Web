@@ -39,11 +39,9 @@ public class ProductDetail {
     @Column(name = "description", length = 500)
     private String description;
 
-    @Column(name = "discount_type", length = 50)
-    private String discountType;
-
-    @Column(name = "discount_value", precision = 10, scale = 2)
-    private BigDecimal discountValue;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_discount")
+    private Discount idDiscount;
 
     @ColumnDefault("b'1'")
     @Column(name = "status")
