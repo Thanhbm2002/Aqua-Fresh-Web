@@ -14,7 +14,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("product")
-@PreAuthorize("hasRole('ROLE_ADMIN')")
 public class ProductController {
 
     @Autowired
