@@ -23,12 +23,13 @@ public class JwtUtil {
     public String generateToken(User user) {
         return Jwts.builder()
                 .setSubject(user.getUsername())
-                .claim("role", user.getRole() != null ? user.getRole() : false)
+                .claim("role", user.getRole() != null ? user.getRole() : "ROLE_USER")  // Lưu role dưới dạng String (default là ROLE_USER)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + jwtConfig.getExpiration()))
                 .signWith(secretKey, SignatureAlgorithm.HS512)
                 .compact();
     }
+
 
     // Giải mã token và lấy username
     public String extractToken(String token) {

@@ -27,8 +27,6 @@ public class ProductDetailDTO {
         this.colorName = productDetail.getIdColor() != null ? productDetail.getIdColor().getName() : null;
         this.technologyName = productDetail.getIdTechnology() != null ? productDetail.getIdTechnology().getName() : null;
         this.description = productDetail.getDescription();
-        this.discountType = productDetail.getDiscountType();
-        this.discountValue = productDetail.getDiscountValue();
         this.status = productDetail.getStatus();
     }
 }
