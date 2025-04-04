@@ -26,8 +26,10 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
-                                .requestMatchers("/auth/register", "/auth/login").permitAll()  // Các URL này không yêu cầu xác thực
-                                .anyRequest().authenticated()  // Các URL còn lại yêu cầu xác thực
+                                .requestMatchers("/user/**").hasAnyAuthority("ROLE_USER")// Các URL này phải yêu cầu xác thực
+                                .requestMatchers("/admin/**").hasAnyAuthority("ROLE_ADMIN") // Các URL này phải yêu cầu xác thực
+
+                                .anyRequest().permitAll()  // Các URL vào tự do
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);  // Thêm filter JWT vào trước UsernamePasswordAuthenticationFilter
 
