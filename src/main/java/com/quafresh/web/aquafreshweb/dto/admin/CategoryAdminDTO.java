@@ -10,5 +10,5 @@ import lombok.Getter;
 public class CategoryAdminDTO {
     private Integer id;
     private String name;
-    private Boolean status;
+    private boolean status;
 }
