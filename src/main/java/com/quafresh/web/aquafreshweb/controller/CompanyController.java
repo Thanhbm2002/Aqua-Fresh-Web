@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("/admin/category")
+@RequestMapping("/admin/company")
 @RestController
 @PreAuthorize("hasRole('ROLE_ADMIN')")
 @AllArgsConstructor
