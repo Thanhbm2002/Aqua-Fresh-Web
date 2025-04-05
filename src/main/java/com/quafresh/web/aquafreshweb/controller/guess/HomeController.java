@@ -1,5 +1,6 @@
 package com.quafresh.web.aquafreshweb.controller.guess;
 
+import com.quafresh.web.aquafreshweb.dto.guess.ProductDetailGuessDTO;
 import com.quafresh.web.aquafreshweb.entity.Picture;
 import com.quafresh.web.aquafreshweb.entity.ProductDetail;
 import com.quafresh.web.aquafreshweb.service.Impl.PictureGuessServiceImpl;
@@ -9,14 +10,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
 @RequestMapping("product")
-@PreAuthorize("hasRole('ROLE_ADMIN')")
-public class ProductController {
+public class HomeController {
 
     @Autowired
     ProductDetailImpl productDetail;
@@ -29,5 +31,14 @@ public class ProductController {
     @GetMapping("picture")
     public ResponseEntity<List<Picture>> getAllPicture(){
         return pictureGuessService.getAllPicture();
+    }
+    @GetMapping("/search")
+    public ResponseEntity<List<ProductDetailGuessDTO>> search(
+            @RequestParam(required = false) Integer technologyId,
+            @RequestParam(required = false) String productName,
+            @RequestParam(required = false) BigDecimal priceFrom,
+            @RequestParam(required = false) BigDecimal priceTo
+    ){
+        return pictureGuessService.getAllPictureProductDetail(technologyId, productName, priceFrom, priceTo);
     }
 }
