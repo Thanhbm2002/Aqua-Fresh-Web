@@ -47,9 +47,9 @@ public class ProductAdminImpl implements ProductAdminService {
                 .id(product.getId())
                 .name(product.getProductName())
                 .idCategory(product.getIdCategory() != null ?
-                        CategoryAdminDTO.builder().id(product.getIdCategory().getId()).name(product.getIdCategory().getName()).build() : null)
+                        CategoryAdminDTO.builder().id(product.getIdCategory().getId()).name(product.getIdCategory().getName()).status(product.getIdCategory().getStatus()).build() : null)
                 .idCompany(product.getIdCompany() != null ?
-                        CompanyAdminDTO.builder().id(product.getIdCompany().getId()).name(product.getIdCompany().getName()).build() : null)
+                        CompanyAdminDTO.builder().id(product.getIdCompany().getId()).name(product.getIdCompany().getName()).status(product.getIdCompany().getStatus()).build() : null)
                 .status(product.getStatus())
                 .build()
         ).collect(Collectors.toList());
