@@ -1,9 +1,8 @@
 package com.quafresh.web.aquafreshweb.service.Impl;
 
-import com.quafresh.web.aquafreshweb.dto.ProductDetailDTO;
 import com.quafresh.web.aquafreshweb.entity.ProductDetail;
 import com.quafresh.web.aquafreshweb.repositories.ProductDetailRepository;
-import com.quafresh.web.aquafreshweb.service.ProductDetailService;
+import com.quafresh.web.aquafreshweb.service.guess.ProductDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
