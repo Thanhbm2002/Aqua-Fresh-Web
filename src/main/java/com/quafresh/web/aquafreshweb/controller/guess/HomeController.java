@@ -17,7 +17,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
-@RequestMapping("product")
+@RequestMapping("/product")
 public class HomeController {
 
     @Autowired
@@ -28,7 +28,7 @@ public class HomeController {
     public ResponseEntity<List<ProductDetail>> getAllProduct(){
         return productDetail.getAll();
     }
-    @GetMapping("picture")
+    @GetMapping("/picture")
     public ResponseEntity<List<Picture>> getAllPicture(){
         return pictureGuessService.getAllPicture();
     }
