@@ -15,7 +15,6 @@ public class ProductDetailGuessDTO {
     private String productName;
     private BigDecimal price;
     private Integer quantity;
-    private String description;
-    private Boolean productStatus;
+    private String description;    private Boolean productStatus;
 }
 

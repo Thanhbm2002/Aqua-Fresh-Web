@@ -13,4 +13,6 @@ public interface PictureGuessService {
                                                                                   String productName,
                                                                                   BigDecimal priceFrom,
                                                                                   BigDecimal priceTo);
+
+    ResponseEntity<List<ProductDetailGuessDTO>> getAllByProductId(Integer id);
 }

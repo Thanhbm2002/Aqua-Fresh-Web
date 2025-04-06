@@ -40,4 +40,14 @@ public class PictureGuessServiceImpl implements PictureGuessService {
         }
         return new ResponseEntity<>(new ArrayList<>(),HttpStatus.BAD_REQUEST);
     }
+
+    @Override
+    public ResponseEntity<List<ProductDetailGuessDTO>> getAllByProductId(Integer id) {
+        try {
+            return new ResponseEntity<>(pictureRepository.getByProductId(id),HttpStatus.OK);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(new ArrayList<>(),HttpStatus.BAD_REQUEST);
+    }
 }
