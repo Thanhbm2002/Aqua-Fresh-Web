@@ -48,6 +48,4 @@ public interface PictureRepository extends JpaRepository<Picture, Integer> {
     List<ProductDetailGuessDTO> getByProductId(@Param("id") Integer id);
 
     List<Picture> findByIdProductDetail(ProductDetail productDetail);
-
-
 }
