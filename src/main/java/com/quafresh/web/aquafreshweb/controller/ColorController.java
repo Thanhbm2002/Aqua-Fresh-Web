@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("/admin/color")
+@RequestMapping("/admin/colors")
 @RestController
 @PreAuthorize("hasRole('ROLE_ADMIN')")
 @AllArgsConstructor
@@ -30,7 +30,7 @@ public class ColorController {
         return ResponseEntity.ok(colorService.getColor(id));
     }
 
-    @PostMapping
+    @PostMapping("/crate")
     public ResponseEntity<ColorAdminDtO> create(@RequestBody ColorAdminDtO colorAdminDtO){
         return ResponseEntity.ok(colorService.addColor(colorAdminDtO));
     }

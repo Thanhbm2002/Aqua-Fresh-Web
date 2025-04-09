@@ -24,7 +24,7 @@ public class ProductDetailAdminController {
     public ResponseEntity<List<ProductDetailAdminDTO>> getProductDetailsByName(@RequestParam String name) {
         return ResponseEntity.ok(productDetailAdmin.search(name));
     }
-    @PostMapping
+    @PostMapping("/crate")
     public ResponseEntity<ProductDetailAdminDTO> createProductDetail(@RequestBody ProductDetailAdminDTO productDetailAdminDTO) {
         return ResponseEntity.ok(productDetailAdmin.create(productDetailAdminDTO));
     }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("/admin/category")
+@RequestMapping("/admin/categories")
 @RestController
 @PreAuthorize("hasRole('ROLE_ADMIN')")
 @AllArgsConstructor
@@ -32,7 +32,7 @@ public class CategoryController {
         return ResponseEntity.ok(categoryService.getCategory(id));
     }
 
-    @PostMapping
+    @PostMapping("/crate")
     public ResponseEntity<CategoryAdminDTO> createCategory(@RequestBody CategoryAdminDTO categoryDTO){
         return ResponseEntity.ok(categoryService.addCategory(categoryDTO));
     }
