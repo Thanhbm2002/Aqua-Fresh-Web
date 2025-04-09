@@ -6,15 +6,16 @@ import com.quafresh.web.aquafreshweb.dto.RegisterDTO;
 import com.quafresh.web.aquafreshweb.entity.User;
 import com.quafresh.web.aquafreshweb.repositories.UserRepository;
 import com.quafresh.web.aquafreshweb._config.JwtUtil;
+import com.quafresh.web.aquafreshweb.util.AdminMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -23,17 +24,13 @@ public class AuthService implements UserDetailsService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtUtil jwtUtil;
+    private final AdminMapper adminMapper;
 
     @Override
     public UserDetails loadUserByUsername(String username) {
-        User user = userRepository.findByUsername(username)
+        User detail = userRepository.findByUsername(username)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
-        return org.springframework.security.core.userdetails.User
-                .builder()
-                .username(user.getUsername())
-                .password(user.getPassword())
-                .roles(user.getRole() ? "ADMIN" : "USER")  // Thêm role của người dùng
-                .build();
+       return detail;
     }
 
     // Đăng ký người dùng
@@ -68,23 +65,20 @@ public class AuthService implements UserDetailsService {
         // Tạo JWT token
         return jwtUtil.generateToken(user);
     }
-    public LoginRequestDTO getLoginInfo(String username) {
-        Optional<User> userOptional = userRepository.findByUsername(username);
-
-        if (userOptional.isPresent()) {
-            User user = userOptional.get();
-            String token = jwtUtil.generateToken(user); // Tạo token mới
-            return new LoginRequestDTO(
-                    user.getUsername(),
-                    user.getPassword(),
-                    user.getEmail(),
-                    user.getPhone(),
-                    user.getRole(),
-                    token
-            );
+    //Lấy thông tin user đăng nhập
+    public LoginRequestDTO getLoginInfo() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || !authentication.isAuthenticated()) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid username or password");
         }
-        return null; // Trả về null nếu không tìm thấy user
-    }
 
+        Object principal = authentication.getPrincipal();
+        if (!(principal instanceof User)) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid user type");
+        }
+
+        User me = (User) principal;
+        return adminMapper.toLoginRequestDTO(me);
+    }
 
 }

@@ -27,7 +27,7 @@ public class CategoryController {
     public ResponseEntity<List<CategoryAdminDTO>> searchCategory(@RequestParam String name){
         return ResponseEntity.ok(categoryService.searchCategory(name));
     }
-    @GetMapping("/{id}")
+    @GetMapping("detail/{id}")
     public ResponseEntity<CategoryAdminDTO> getCategory(@PathVariable Integer id){
         return ResponseEntity.ok(categoryService.getCategory(id));
     }
@@ -36,12 +36,12 @@ public class CategoryController {
     public ResponseEntity<CategoryAdminDTO> createCategory(@RequestBody CategoryAdminDTO categoryDTO){
         return ResponseEntity.ok(categoryService.addCategory(categoryDTO));
     }
-    @PutMapping("/{id}")
+    @PutMapping("update/{id}")
     public ResponseEntity<CategoryAdminDTO> updateCategory(@PathVariable Integer id, @RequestBody CategoryAdminDTO categoryDTO){
         return ResponseEntity.ok(categoryService.updateCategory(id, categoryDTO));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("delete/{id}")
     public ResponseEntity<CategoryAdminDTO> deleteCategory(@PathVariable Integer id){
         categoryService.deleteCategory(id);
         return ResponseEntity.ok().build();

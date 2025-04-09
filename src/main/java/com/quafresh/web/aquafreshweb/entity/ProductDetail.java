@@ -6,6 +6,8 @@ import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -47,4 +49,13 @@ public class ProductDetail {
     @Column(name = "status")
     private Boolean status;
 
+    @OneToMany(mappedBy = "idProductDetail", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Picture> listUrl = new ArrayList<>();
+
+    public void addPicture(Picture picture) {
+        listUrl.add(picture);
+    }
+    public void removePicture(Picture picture) {
+        listUrl.remove(picture);
+    }
 }

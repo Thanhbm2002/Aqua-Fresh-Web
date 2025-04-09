@@ -9,9 +9,7 @@ import lombok.Setter;
 @Setter
 public class LoginRequestDTO {
     private String username;
-    private String password;
     private String email;
     private String phone;
-    private Boolean role;
-    private String token;
+    private String address;
 }

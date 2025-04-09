@@ -27,7 +27,7 @@ public class CompanyController {
     public ResponseEntity<List<CompanyAdminDTO>> search(@RequestParam String name){
         return ResponseEntity.ok(companyImpl.search(name));
     }
-    @GetMapping("/{id}")
+    @GetMapping("detail/{id}")
     public ResponseEntity<CompanyAdminDTO> getById(@PathVariable Integer id){
         return ResponseEntity.ok(companyImpl.getByID(id));
     }
@@ -36,12 +36,12 @@ public class CompanyController {
     public ResponseEntity<CompanyAdminDTO> create(@RequestBody CompanyAdminDTO companyAdminDTO){
         return ResponseEntity.ok(companyImpl.create(companyAdminDTO));
     }
-    @PutMapping("/{id}")
+    @PutMapping("update/{id}")
     public ResponseEntity<CompanyAdminDTO> update(@PathVariable Integer id, @RequestBody CompanyAdminDTO companyAdminDTO){
         return ResponseEntity.ok(companyImpl.update(id, companyAdminDTO));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("delete/{id}")
     public ResponseEntity<CompanyAdminDTO> delete(@PathVariable Integer id){
         companyImpl.delete(id);
         return ResponseEntity.ok().build();
