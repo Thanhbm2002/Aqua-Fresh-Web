@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("/admin/company")
+@RequestMapping("/admin/companies")
 @RestController
 @PreAuthorize("hasRole('ROLE_ADMIN')")
 @AllArgsConstructor
@@ -32,7 +32,7 @@ public class CompanyController {
         return ResponseEntity.ok(companyImpl.getByID(id));
     }
 
-    @PostMapping
+    @PostMapping("/crate")
     public ResponseEntity<CompanyAdminDTO> create(@RequestBody CompanyAdminDTO companyAdminDTO){
         return ResponseEntity.ok(companyImpl.create(companyAdminDTO));
     }

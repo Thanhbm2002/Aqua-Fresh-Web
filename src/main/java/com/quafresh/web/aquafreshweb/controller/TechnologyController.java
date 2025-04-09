@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("/admin/technology")
+@RequestMapping("/admin/technologys")
 @RestController
 @PreAuthorize("hasRole('ROLE_ADMIN')")
 @AllArgsConstructor
@@ -32,7 +32,7 @@ public class TechnologyController {
         return ResponseEntity.ok(technologyService.getByID(id));
     }
 
-    @PostMapping
+    @PostMapping("/crate")
     public ResponseEntity<TechnologyAdminDTO> createTechnology(@RequestBody TechnologyAdminDTO technologyDTO) {
         return ResponseEntity.ok(technologyService.create(technologyDTO));
     }

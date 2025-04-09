@@ -39,7 +39,7 @@ public class ProductAdminController {
     }
 
     // Tạo mới sản phẩm
-    @PostMapping
+    @PostMapping("/crate")
     public ResponseEntity<ProductAdminDTO> createProduct(@RequestBody ProductAdminDTO productAdminDTO) {
         ProductAdminDTO product = productAdminService.create(productAdminDTO);
         return ResponseEntity.ok(product);
