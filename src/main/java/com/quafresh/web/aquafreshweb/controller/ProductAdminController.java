@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/admin/products")
-//@PreAuthorize("hasRole('ROLE_ADMIN')")
+@PreAuthorize("hasRole('ROLE_ADMIN')")
 @AllArgsConstructor
 public class ProductAdminController {
 
@@ -32,7 +32,7 @@ public class ProductAdminController {
     }
 
     // Lấy thông tin chi tiết sản phẩm theo ID
-    @GetMapping("/{id}")
+    @GetMapping("detail/{id}")
     public ResponseEntity<ProductAdminDTO> getProductById(@PathVariable Integer id) {
         ProductAdminDTO product = productAdminService.getByID(id);
         return ResponseEntity.ok(product);
@@ -46,14 +46,14 @@ public class ProductAdminController {
     }
 
     // Cập nhật thông tin sản phẩm
-    @PutMapping("/{id}")
+    @PutMapping("update/{id}")
     public ResponseEntity<ProductAdminDTO> updateProduct(@PathVariable Integer id, @RequestBody ProductAdminDTO productAdminDTO) {
         ProductAdminDTO product = productAdminService.update(id, productAdminDTO);
         return ResponseEntity.ok(product);
     }
 
     // Xóa sản phẩm
-    @DeleteMapping("/{id}")
+    @DeleteMapping("delete/{id}")
     public ResponseEntity<String> deleteProduct(@PathVariable Integer id) {
         String response = productAdminService.delete(id);
         return ResponseEntity.ok(response);

@@ -25,7 +25,7 @@ public class ColorController {
     public ResponseEntity<List<ColorAdminDtO>> search(@RequestParam String name){
         return ResponseEntity.ok(colorService.searchColor(name));
     }
-    @GetMapping("/{id}")
+    @GetMapping("detail/{id}")
     public ResponseEntity<ColorAdminDtO> getById(@PathVariable Integer id){
         return ResponseEntity.ok(colorService.getColor(id));
     }
@@ -34,12 +34,12 @@ public class ColorController {
     public ResponseEntity<ColorAdminDtO> create(@RequestBody ColorAdminDtO colorAdminDtO){
         return ResponseEntity.ok(colorService.addColor(colorAdminDtO));
     }
-    @PutMapping("/{id}")
+    @PutMapping("update/{id}")
     public ResponseEntity<ColorAdminDtO> update(@PathVariable Integer id, @RequestBody ColorAdminDtO colorAdminDtO){
         return ResponseEntity.ok(colorService.updateColor(id, colorAdminDtO));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("delete/{id}")
     public ResponseEntity<ColorAdminDtO> delete(@PathVariable Integer id){
         colorService.deleteColor(id);
         return ResponseEntity.ok().build();

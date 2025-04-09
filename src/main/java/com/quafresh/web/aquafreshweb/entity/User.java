@@ -43,4 +43,5 @@ public class User implements UserDetails {
                 new SimpleGrantedAuthority(role ? "ADMIN" : "USER")
         );
     }
+
 }

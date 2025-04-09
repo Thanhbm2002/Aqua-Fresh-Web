@@ -6,9 +6,8 @@ import com.quafresh.web.aquafreshweb.dto.LoginRequestDTO;
 import com.quafresh.web.aquafreshweb.dto.RegisterDTO;
 import com.quafresh.web.aquafreshweb.service.AuthService;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
+
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -22,9 +21,9 @@ public class AuthController {
         return authService.register(registerDTO);
     }
 
-    @GetMapping("/login-info")
-    public String loginInfo(){
-        return "abcnksadsa";
+    @GetMapping("/me")
+    public ResponseEntity<LoginRequestDTO> loginInfo() {
+        return ResponseEntity.ok(authService.getLoginInfo());
     }
     @PostMapping("/login")
     public String login(@RequestBody LoginDTO loginDTO) {

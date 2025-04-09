@@ -27,7 +27,7 @@ public class TechnologyController {
         return ResponseEntity.ok(technologyService.search(name));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("detail/{id}")
     public ResponseEntity<TechnologyAdminDTO> getTechnology(@PathVariable Integer id) {
         return ResponseEntity.ok(technologyService.getByID(id));
     }
@@ -37,12 +37,12 @@ public class TechnologyController {
         return ResponseEntity.ok(technologyService.create(technologyDTO));
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("update/{id}")
     public ResponseEntity<TechnologyAdminDTO> updateTechnology(@PathVariable Integer id, @RequestBody TechnologyAdminDTO technologyDTO) {
         return ResponseEntity.ok(technologyService.update(id, technologyDTO));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("delete/{id}")
     public ResponseEntity<Void> deleteTechnology(@PathVariable Integer id) {
         technologyService.delete(id);
         return ResponseEntity.ok().build();
