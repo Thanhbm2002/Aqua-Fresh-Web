@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -30,4 +32,14 @@ public class Discount {
     private String description;
     @Column(name = "is_active")
     private boolean isActive;
+
+    @OneToMany(mappedBy = "idDiscount",cascade = CascadeType.ALL, orphanRemoval = true)
+    List<ProductDetail> productDetailList;
+
+//    public void add(ProductDetail productDetail) {
+//        productDetailList.add(productDetail);
+//    }
+//    public void remove(ProductDetail productDetail) {
+//        productDetailList.remove(productDetail);
+//    }
 }

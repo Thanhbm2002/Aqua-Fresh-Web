@@ -1,6 +1,5 @@
 package com.quafresh.web.aquafreshweb.service.admin;
 
-import com.quafresh.web.aquafreshweb.dto.admin.ProductAdminDTO;
 import com.quafresh.web.aquafreshweb.dto.admin.ProductDetailAdminDTO;
 
 import java.util.List;
