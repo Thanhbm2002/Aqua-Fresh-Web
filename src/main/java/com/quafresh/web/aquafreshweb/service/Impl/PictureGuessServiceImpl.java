@@ -1,5 +1,6 @@
 package com.quafresh.web.aquafreshweb.service.Impl;
 
+import com.quafresh.web.aquafreshweb.dto.guess.PictureGuessDTO;
 import com.quafresh.web.aquafreshweb.dto.guess.ProductDetailGuessDTO;
 import com.quafresh.web.aquafreshweb.entity.Picture;
 import com.quafresh.web.aquafreshweb.repositories.PictureRepository;
@@ -19,9 +20,9 @@ public class PictureGuessServiceImpl implements PictureGuessService {
     PictureRepository pictureRepository;
 
     @Override
-    public ResponseEntity<List<Picture>> getAllPicture() {
+    public ResponseEntity<List<PictureGuessDTO>> getAllPicture() {
         try {
-            return new ResponseEntity<>(pictureRepository.findAll(), HttpStatus.OK);
+            return new ResponseEntity<>(pictureRepository.findAll().stream().map(PictureGuessDTO::new).toList(), HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
         }

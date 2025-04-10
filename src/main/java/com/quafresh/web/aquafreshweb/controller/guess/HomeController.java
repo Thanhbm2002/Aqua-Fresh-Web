@@ -1,5 +1,6 @@
 package com.quafresh.web.aquafreshweb.controller.guess;
 
+import com.quafresh.web.aquafreshweb.dto.guess.PictureGuessDTO;
 import com.quafresh.web.aquafreshweb.dto.guess.ProductDetailGuessDTO;
 import com.quafresh.web.aquafreshweb.dto.guess.ProductDetailGuessDTO2;
 import com.quafresh.web.aquafreshweb.entity.*;
@@ -46,7 +47,7 @@ public class HomeController {
     }
 
     @GetMapping("/picture")
-    public ResponseEntity<List<Picture>> getAllPicture() {
+    public ResponseEntity<List<PictureGuessDTO>> getAllPicture() {
         return pictureGuessService.getAllPicture();
     }
 
