@@ -1,5 +1,6 @@
 package com.quafresh.web.aquafreshweb.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -49,7 +50,9 @@ public class ProductDetail {
     @Column(name = "status")
     private Boolean status;
 
+
     @OneToMany(mappedBy = "idProductDetail", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Picture> listUrl = new ArrayList<>();
 
     public void addPicture(Picture picture) {

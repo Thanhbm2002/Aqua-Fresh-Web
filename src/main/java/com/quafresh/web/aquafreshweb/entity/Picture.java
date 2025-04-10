@@ -1,5 +1,6 @@
 package com.quafresh.web.aquafreshweb.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,6 +20,7 @@ public class Picture {
 
     @ManyToOne
     @JoinColumn(name = "id_product_detail")
+    @JsonBackReference
     private ProductDetail idProductDetail;
 
     @ColumnDefault("b'1'")

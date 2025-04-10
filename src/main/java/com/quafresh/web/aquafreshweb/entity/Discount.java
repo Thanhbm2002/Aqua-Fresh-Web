@@ -33,8 +33,8 @@ public class Discount {
     @Column(name = "is_active")
     private boolean isActive;
 
-    @OneToMany(mappedBy = "idDiscount",cascade = CascadeType.ALL, orphanRemoval = true)
-    List<ProductDetail> productDetailList;
+//    @OneToMany(mappedBy = "idDiscount",cascade = CascadeType.ALL, orphanRemoval = true)
+//    List<ProductDetail> productDetailList;
 
 //    public void add(ProductDetail productDetail) {
 //        productDetailList.add(productDetail);

@@ -1,0 +1,54 @@
+[33m4e449ef[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/phuc[m[33m, [m[1;32mphuc[m[33m)[m HEAD@{0}: reset: moving to HEAD@{0}
+[33m4e449ef[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/phuc[m[33m, [m[1;32mphuc[m[33m)[m HEAD@{1}: reset: moving to HEAD@{1}
+[33m4e449ef[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/phuc[m[33m, [m[1;32mphuc[m[33m)[m HEAD@{2}: reset: moving to HEAD
+[33m4e449ef[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/phuc[m[33m, [m[1;32mphuc[m[33m)[m HEAD@{3}: merge phuc: Fast-forward
+[33me79f8fc[m HEAD@{4}: checkout: moving from phuc to main
+[33m4e449ef[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/phuc[m[33m, [m[1;32mphuc[m[33m)[m HEAD@{5}: commit: update getAll Guess
+[33me79f8fc[m HEAD@{6}: checkout: moving from main to phuc
+[33me79f8fc[m HEAD@{7}: checkout: moving from phuc to main
+[33me79f8fc[m HEAD@{8}: checkout: moving from main to phuc
+[33me79f8fc[m HEAD@{9}: merge phuc: Fast-forward
+[33maed31f1[m HEAD@{10}: checkout: moving from phuc to main
+[33me79f8fc[m HEAD@{11}: commit: update getById
+[33m9abca62[m HEAD@{12}: pull origin main: Fast-forward
+[33maed31f1[m HEAD@{13}: checkout: moving from main to phuc
+[33maed31f1[m HEAD@{14}: reset: moving to HEAD
+[33maed31f1[m HEAD@{15}: reset: moving to HEAD~1
+[33mab53b3d[m HEAD@{16}: reset: moving to HEAD
+[33mab53b3d[m HEAD@{17}: commit: update api
+[33maed31f1[m HEAD@{18}: merge phuc: Fast-forward
+[33mce5aea8[m HEAD@{19}: checkout: moving from phuc to main
+[33maed31f1[m HEAD@{20}: commit: update search home
+[33m3329901[m HEAD@{21}: rebase (finish): returning to refs/heads/phuc
+[33m3329901[m HEAD@{22}: rebase (pick): update api
+[33mb566c90[m HEAD@{23}: rebase (pick): update 04/04
+[33m76f6038[m HEAD@{24}: rebase (pick): Lưu thay đổi trước khi pull
+[33me9ea250[m HEAD@{25}: rebase (pick): update lai entity
+[33mb302d20[m HEAD@{26}: rebase (pick): update api
+[33m924f657[m HEAD@{27}: rebase (pick): update 04/04
+[33m172d0c7[m HEAD@{28}: rebase (pick): Lưu thay đổi trước khi pull
+[33m561aa6d[m HEAD@{29}: rebase (pick): update lai entity
+[33m56399c3[m HEAD@{30}: rebase (pick): update api
+[33m4f89c68[m HEAD@{31}: rebase (pick): update 04/04
+[33md130e16[m HEAD@{32}: rebase (pick): Lưu thay đổi trước khi pull
+[33m04a61f5[m HEAD@{33}: rebase (pick): update register and login 04/04
+[33me7ebf5f[m HEAD@{34}: rebase (pick): update 04/04
+[33m88ab55b[m HEAD@{35}: rebase (pick): Lưu thay đổi trước khi pull
+[33m7e82fd9[m HEAD@{36}: rebase (pick): update lai entity
+[33mca14b6d[m HEAD@{37}: rebase (pick): update api
+[33mab041d0[m HEAD@{38}: rebase (pick): update register and login 04/04
+[33m7c7654d[m HEAD@{39}: rebase (continue): update 04/04
+[33m00e02ce[m HEAD@{40}: rebase (pick): Lưu thay đổi trước khi pull
+[33m4f72079[m HEAD@{41}: rebase (pick): Lưu thay đổi trước khi pull
+[33m0cea4b8[m HEAD@{42}: rebase (continue): Lưu thay đổi trước khi pull
+[33mce5aea8[m HEAD@{43}: pull origin main --rebase (start): checkout ce5aea83477af0d3f9f32c1345e656bc05efb74a
+[33m071b603[m HEAD@{44}: rebase (finish): returning to refs/heads/phuc
+[33m071b603[m HEAD@{45}: rebase (pick): update api
+[33me6a3149[m HEAD@{46}: rebase (continue): update 04/04
+[33ma6464a1[m HEAD@{47}: rebase (continue): Lưu thay đổi trước khi pull
+[33m0a0ac25[m HEAD@{48}: rebase (continue): update lai entity
+[33mff1503a[m HEAD@{49}: pull origin phuc --rebase (start): checkout ff1503a314952035a219432fe98264e601b582a4
+[33m4153e2d[m HEAD@{50}: rebase (finish): returning to refs/heads/phuc
+[33m4153e2d[m HEAD@{51}: rebase (pick): update api
+[33mb0c936c[m HEAD@{52}: rebase (pick): update 04/04
+[33m56bce21[m HEAD@{53}: rebase (pick): Lưu thay đổi trước khi pull
