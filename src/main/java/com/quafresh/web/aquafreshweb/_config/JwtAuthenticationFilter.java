@@ -55,6 +55,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
                         // Đặt Authentication vào SecurityContext
                         SecurityContextHolder.getContext().setAuthentication(authentication);
+                        System.out.println("UserDetail: " + userDetail);
                     }
                 }
             } catch (ExpiredJwtException e) {

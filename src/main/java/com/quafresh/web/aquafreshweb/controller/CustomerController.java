@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("admin/customers")
-@PreAuthorize("hasRole('ROLE_ADMIN')")
+@PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
 public class CustomerController {
     private final CustomerImpl customerImpl;
 
@@ -27,7 +27,7 @@ public class CustomerController {
         return ResponseEntity.ok(customerImpl.search(name));
     }
 
-    @PostMapping("/crate")
+    @PostMapping("/create")
     public ResponseEntity<CustomerDTO> crateCustomer(@RequestBody CustomerDTO customerDTO) {
         return ResponseEntity.ok(customerImpl.create(customerDTO));
     }

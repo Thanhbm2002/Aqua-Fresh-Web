@@ -11,7 +11,7 @@ import java.util.List;
 
 @RequestMapping("/admin/colors")
 @RestController
-@PreAuthorize("hasRole('ROLE_ADMIN')")
+@PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
 @AllArgsConstructor
 public class ColorController {
     private final ColorImpl colorService;
@@ -30,7 +30,7 @@ public class ColorController {
         return ResponseEntity.ok(colorService.getColor(id));
     }
 
-    @PostMapping("/crate")
+    @PostMapping("/create")
     public ResponseEntity<ColorAdminDtO> create(@RequestBody ColorAdminDtO colorAdminDtO){
         return ResponseEntity.ok(colorService.addColor(colorAdminDtO));
     }

@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/admin/products")
-@PreAuthorize("hasRole('ROLE_ADMIN')")
+@PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
 @AllArgsConstructor
 public class ProductAdminController {
 
@@ -39,7 +39,7 @@ public class ProductAdminController {
     }
 
     // Tạo mới sản phẩm
-    @PostMapping("/crate")
+    @PostMapping("/create")
     public ResponseEntity<ProductAdminDTO> createProduct(@RequestBody ProductAdminDTO productAdminDTO) {
         ProductAdminDTO product = productAdminService.create(productAdminDTO);
         return ResponseEntity.ok(product);

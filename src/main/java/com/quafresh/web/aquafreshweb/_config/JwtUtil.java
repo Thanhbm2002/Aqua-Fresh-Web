@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
+import java.util.List;
 
 @Component
 public class JwtUtil {
@@ -21,9 +22,10 @@ public class JwtUtil {
 
     // Tạo token chứa username và role
     public String generateToken(User user) {
+        String mappedRole = ( user.getRole() != null ? "ROLE_ADMIN" : "ROLE_USER");
         return Jwts.builder()
                 .setSubject(user.getUsername())
-                .claim("role", user.getRole() != null ? user.getRole() : "ROLE_USER")  // Lưu role dưới dạng String (default là ROLE_USER)
+                .claim("authorities", List.of(mappedRole))  // Đúng định dạng Spring Security
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + jwtConfig.getExpiration()))
                 .signWith(secretKey, SignatureAlgorithm.HS512)
@@ -70,19 +72,21 @@ public class JwtUtil {
         }
     }
 
-    // Lấy role từ token
-    public Boolean getUserRole(String token) {
+    // Lấy role từ token (từ claim "authorities")
+    public String getUserRole(String token) {
         Claims claims = getClaims(token);
-        if (claims != null && claims.containsKey("role")) {
-            Object roleObject = claims.get("role");
-            if (roleObject instanceof Boolean) {
-                return (Boolean) roleObject;
-            } else if (roleObject instanceof Integer) {
-                return ((Integer) roleObject) != 0;
-            } else if (roleObject instanceof String) {
-                return Boolean.parseBoolean((String) roleObject);
+        if (claims != null && claims.containsKey("authorities")) {
+            Object authoritiesObj = claims.get("authorities");
+            if (authoritiesObj instanceof List<?>) {
+                List<?> list = (List<?>) authoritiesObj;
+                if (!list.isEmpty()) {
+                    Object first = list.get(0);
+                    if (first instanceof String) {
+                        return (String) first; // Trả về ROLE_ADMIN, ROLE_USER,...
+                    }
+                }
             }
         }
-        throw new RuntimeException("Role không tồn tại hoặc không hợp lệ trong token!");
+        throw new RuntimeException("Không tìm thấy role trong token!");
     }
 }

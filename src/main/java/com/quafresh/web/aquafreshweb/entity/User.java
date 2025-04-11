@@ -40,7 +40,7 @@ public class User implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         // Trả về quyền dựa trên giá trị của role
         return Collections.singletonList(
-                new SimpleGrantedAuthority(role ? "ADMIN" : "USER")
+                new SimpleGrantedAuthority(role ? "ROLE_ADMIN" : "ROLE_USER")
         );
     }
 

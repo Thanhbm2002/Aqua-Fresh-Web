@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/admin/products-detail")
-@PreAuthorize("hasRole('ROLE_ADMIN')")
+@PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
 public class ProductDetailAdminController {
     private final ProductDetailAdminImpl productDetailAdmin;
 
@@ -24,7 +24,7 @@ public class ProductDetailAdminController {
     public ResponseEntity<List<ProductDetailAdminDTO>> getProductDetailsByName(@RequestParam String name) {
         return ResponseEntity.ok(productDetailAdmin.search(name));
     }
-    @PostMapping("/crate")
+    @PostMapping("/create")
     public ResponseEntity<ProductDetailAdminDTO> createProductDetail(@RequestBody ProductDetailAdminDTO productDetailAdminDTO) {
         return ResponseEntity.ok(productDetailAdmin.create(productDetailAdminDTO));
     }

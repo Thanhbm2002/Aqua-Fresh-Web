@@ -9,10 +9,9 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
 @RequestMapping("/admin/categories")
 @RestController
-@PreAuthorize("hasRole('ROLE_ADMIN')")
 @AllArgsConstructor
 public class CategoryController {
 
@@ -32,7 +31,7 @@ public class CategoryController {
         return ResponseEntity.ok(categoryService.getCategory(id));
     }
 
-    @PostMapping("/crate")
+    @PostMapping("/create")
     public ResponseEntity<CategoryAdminDTO> createCategory(@RequestBody CategoryAdminDTO categoryDTO){
         return ResponseEntity.ok(categoryService.addCategory(categoryDTO));
     }

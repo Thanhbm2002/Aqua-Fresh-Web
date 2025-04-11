@@ -13,7 +13,7 @@ import java.util.List;
 
 @RequestMapping("/admin/companies")
 @RestController
-@PreAuthorize("hasRole('ROLE_ADMIN')")
+@PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
 @AllArgsConstructor
 public class CompanyController {
     private final CompanyImpl companyImpl;
@@ -32,7 +32,7 @@ public class CompanyController {
         return ResponseEntity.ok(companyImpl.getByID(id));
     }
 
-    @PostMapping("/crate")
+    @PostMapping("/create")
     public ResponseEntity<CompanyAdminDTO> create(@RequestBody CompanyAdminDTO companyAdminDTO){
         return ResponseEntity.ok(companyImpl.create(companyAdminDTO));
     }
