@@ -21,10 +21,6 @@ public class AuthController {
         return authService.register(registerDTO);
     }
 
-    @GetMapping("/me")
-    public ResponseEntity<LoginRequestDTO> loginInfo() {
-        return ResponseEntity.ok(authService.getLoginInfo());
-    }
     @PostMapping("/login")
     public String login(@RequestBody LoginDTO loginDTO) {
         return authService.login(loginDTO);

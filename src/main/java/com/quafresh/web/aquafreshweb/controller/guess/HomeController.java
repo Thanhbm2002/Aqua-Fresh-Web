@@ -1,5 +1,6 @@
 package com.quafresh.web.aquafreshweb.controller.guess;
 
+import com.quafresh.web.aquafreshweb.dto.guess.CartGuessDTO;
 import com.quafresh.web.aquafreshweb.dto.guess.PictureGuessDTO;
 import com.quafresh.web.aquafreshweb.dto.guess.ProductDetailGuessDTO;
 import com.quafresh.web.aquafreshweb.dto.guess.ProductDetailGuessDTO2;
@@ -13,7 +14,6 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
-@PreAuthorize("hasRole('ROLE_USER')")
 @RequestMapping("/product")
 public class HomeController {
 
@@ -31,7 +31,8 @@ public class HomeController {
                           CategoryServiceImpl categoryServiceImpl,
                           TechnologyServiceImpl technologyServiceImpl,
                           CompanyServiceImpl companyServiceImpl,
-                          PictureGuessServiceImpl pictureGuessService) {
+                          PictureGuessServiceImpl pictureGuessService
+                          ) {
         this.productDetail = productDetail;
         this.colorServiceImpl = colorServiceImpl;
         this.discountServiceImpl = discountServiceImpl;
@@ -39,6 +40,7 @@ public class HomeController {
         this.technologyServiceImpl = technologyServiceImpl;
         this.companyServiceImpl = companyServiceImpl;
         this.pictureGuessService = pictureGuessService;
+
     }
 
     @GetMapping
@@ -93,4 +95,5 @@ public class HomeController {
     public ResponseEntity<List<Technology>> getAllCTechnology() {
         return technologyServiceImpl.getAllTechnology();
     }
+
 }
