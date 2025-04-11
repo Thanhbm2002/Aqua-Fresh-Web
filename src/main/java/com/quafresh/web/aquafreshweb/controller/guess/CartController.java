@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("/cart")
+@RequestMapping("/user/cart")
 @AllArgsConstructor
 @RestController
 @PreAuthorize("hasRole('ROLE_USER')")

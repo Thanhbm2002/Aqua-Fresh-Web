@@ -4,6 +4,7 @@ import com.quafresh.web.aquafreshweb.dto.guess.OrderDetailClientDTO;
 import com.quafresh.web.aquafreshweb.service.Impl.OderGuessImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class OrderController {
     private final OderGuessImpl orOderGuess;
+    //Oder khi co User
+
     @PostMapping
     public ResponseEntity<String> addOrder (@RequestBody OrderDetailClientDTO orderDetailClientDTO){
         return  orOderGuess.addOrder(orderDetailClientDTO);
