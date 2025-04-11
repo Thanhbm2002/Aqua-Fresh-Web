@@ -10,6 +10,7 @@ import com.quafresh.web.aquafreshweb.util.AdminMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -61,7 +62,11 @@ public class AuthService implements UserDetailsService {
         if (!passwordEncoder.matches(loginDTO.getPassword(), user.getPassword())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid password");
         }
-
+        String role = user.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .findFirst()
+                .orElse("No role");
+        System.out.println("User '" + user.getUsername() + "' logged in with role: " + role);
         // Tạo JWT token
         return jwtUtil.generateToken(user);
     }

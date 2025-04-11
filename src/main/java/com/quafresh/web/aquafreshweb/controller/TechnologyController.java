@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("/admin/technologys")
+@RequestMapping("/admin/technologies")
 @RestController
-@PreAuthorize("hasRole('ROLE_ADMIN')")
+@PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
 @AllArgsConstructor
 public class TechnologyController {
 
@@ -32,7 +32,7 @@ public class TechnologyController {
         return ResponseEntity.ok(technologyService.getByID(id));
     }
 
-    @PostMapping("/crate")
+    @PostMapping("/create")
     public ResponseEntity<TechnologyAdminDTO> createTechnology(@RequestBody TechnologyAdminDTO technologyDTO) {
         return ResponseEntity.ok(technologyService.create(technologyDTO));
     }
